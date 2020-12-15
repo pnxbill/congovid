@@ -12,9 +12,9 @@ app.listen(8080);
 //   routine();
 // });
 
-cron.schedule("* * * * *", () => {
-  routine();
-});
+// cron.schedule("* * * * *", () => {
+//   routine();
+// });
 
 const routine = async () => {
   const { href, date } = await getDownloadLink();
@@ -24,3 +24,5 @@ const routine = async () => {
   const dailyInfo = await pdfExtract(filename)
   console.log(dailyInfo)
 };
+
+routine();
