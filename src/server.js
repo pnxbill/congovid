@@ -22,7 +22,9 @@ connect.then((db) => {
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  introspection: true,
+  playground: true
 });
 
 app = express();
