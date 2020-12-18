@@ -37,7 +37,7 @@ app.listen({ port: PORT }, () =>
 
 
 
-cron.schedule("38 12 */1 * *", () => {
+cron.schedule("0 14 */1 * *", () => {
   routine();
 }, {scheduled : true, timezone: "America/Sao_Paulo"});
 
