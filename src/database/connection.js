@@ -1,4 +1,6 @@
 // const { Sequelize } = require('sequelize');
+const dotenv = require('dotenv');
+dotenv.config();
 
 // // Option 1: Passing a connection URI
 // const sequelize = new Sequelize('sqlite::memory:') // Example for sqlite
@@ -18,6 +20,6 @@
 
 
 module.exports = {
-  DB_URI: 'mongodb+srv://pnxbill:qHuEFIVvBzBwS3HK@cluster0.qmp4t.mongodb.net/congovid?retryWrites=true&w=majority',
-  SESSION_SECRET: 'ds58_!5234s5ew'
+  DB_URI: process.env.MONGO_DB_URI,
+  SESSION_SECRET: process.env.MONGO_DB_SECRET
 }
