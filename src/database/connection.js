@@ -20,6 +20,6 @@ dotenv.config();
 
 
 module.exports = {
-  DB_URI: process.env.MONGO_DB_URI,
-  SESSION_SECRET: process.env.MONGO_DB_SECRET
+  DB_URI: process.env.MONGO_DB_URI || "mongodb+srv://pnxbill:qHuEFIVvBzBwS3HK@cluster0.qmp4t.mongodb.net/congovid?retryWrites=true&w=majority" ,
+  SESSION_SECRET: process.env.MONGO_DB_SECRET || "ds58_!5234s5ew"
 }
