@@ -2,7 +2,12 @@ const puppeteer = require('puppeteer');
 
 exports.getDownloadLink = async () => {
   const url = 'http://www.congonhas.mg.gov.br/index.php/atualizacao-informe-epidemiologico/';
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+  ],
+})
   const page = await browser.newPage()
   await page.goto(url)
 
