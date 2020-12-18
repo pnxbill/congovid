@@ -32,7 +32,7 @@ app.listen({ port: 8000 }, () =>
 
 
 
-cron.schedule("0 13 */1 * *", () => {
+cron.schedule("0 11 */1 * *", () => {
   routine();
 });
 
