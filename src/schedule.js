@@ -4,6 +4,14 @@ const { pdfExtract } = require("./functions/pdfExtract");
 const { resolvers } = require('./database/resolvers/informeResolver');
 const fs = require('fs');
 
+const connect = mongoose.connect(config.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+connect.then((db) => {
+  console.log('Connected to db');
+  routine();
+}, (err) => {
+  console.log(err);
+});
+
 const routine = async () => {
   const { href, date } = await getDownloadLink();
   const filename = `Informe ${date}.pdf`
@@ -23,5 +31,3 @@ const routine = async () => {
     console.error(err)
   }
 };
-
-routine();
