@@ -7,6 +7,7 @@ const { resolvers } = require('./database/resolvers/informeResolver');
 const cors = require('cors');
 const { ApolloServer } = require('apollo-server-express');
 const config = require('./database/connection')
+const routes = require('./routes');
 
 const { getDownloadLink } = require('./functions/getDownloadLink');
 const { pdfExtract } = require('./functions/pdfExtract');
@@ -26,13 +27,14 @@ const server = new ApolloServer({
 
 app = express();
 app.use('*', cors());
+app.use(routes)
 server.applyMiddleware({ app });
 app.listen({ port: 8000 }, () =>
   console.log(`🚀 Server ready at http://localhost:8000${server.graphqlPath}`));
 
 
 
-cron.schedule("0 11 */1 * *", () => {
+cron.schedule("0 12 */1 * *", () => {
   routine();
 });
 
