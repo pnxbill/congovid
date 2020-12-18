@@ -2,6 +2,8 @@ const { downloadPdf } = require("./functions/downloadPdf");
 const { getDownloadLink } = require("./functions/getDownloadLink");
 const { pdfExtract } = require("./functions/pdfExtract");
 const { resolvers } = require('./database/resolvers/informeResolver');
+const mongoose = require('mongoose');
+const config = require('./database/connection');
 const fs = require('fs');
 
 const connect = mongoose.connect(config.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
