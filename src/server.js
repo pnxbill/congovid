@@ -29,7 +29,10 @@ app = express();
 app.use('*', cors());
 app.use(routes)
 server.applyMiddleware({ app });
-app.listen({ port: 8000 }, () =>
+
+const PORT = process.env.PORT || 8000;
+
+app.listen({ port: PORT }, () =>
   console.log(`🚀 Server ready at http://localhost:8000${server.graphqlPath}`));
 
 
