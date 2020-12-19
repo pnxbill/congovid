@@ -12,7 +12,7 @@ const resolvers = {
           [arr[0], arr[1]] = [arr[1], arr[0]];
           return new Date(arr.join("/"));
         };
-        return fixDate(b) - fixDate(a);
+        return fixDate(b.dia) - fixDate(a.dia);
       });
       ////////////////
 
