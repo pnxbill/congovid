@@ -6,8 +6,7 @@ const resolvers = {
       return Informe.find({})
         .sort("dia")
         .exec(function (err, docs) {
-          console.log("try docs", docs);
-          return docs.sort((a, b) => {
+          docs = docs.sort((a, b) => {
             const fixDate = (d) => {
               let arr = d.split("/");
               [arr[0], arr[1]] = [arr[1], arr[0]];
@@ -15,6 +14,7 @@ const resolvers = {
             };
             return fixDate(b.dia) - fixDate(a.dia);
           });
+          console.log("try docs", docs);
         });
     },
 
