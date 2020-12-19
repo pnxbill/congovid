@@ -4,6 +4,7 @@ const resolvers = {
   Query: {
     getInformes: (parent, args) => {
       let informes = Informe.find({});
+      console.log("inf", informes);
 
       // Sort by date
       informes = informes.sort((a, b) => {
