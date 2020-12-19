@@ -3,21 +3,18 @@ const { Informe } = require("../models/Informe");
 const resolvers = {
   Query: {
     getInformes: (parent, args) => {
-      let informes = Informe.find({});
-      console.log("inf", informes);
-
-      // Sort by date
-      informes = informes.sort((a, b) => {
-        const fixDate = (d) => {
-          let arr = d.split("/");
-          [arr[0], arr[1]] = [arr[1], arr[0]];
-          return new Date(arr.join("/"));
-        };
-        return fixDate(b.dia) - fixDate(a.dia);
-      });
-      ////////////////
-
-      return informes;
+      return Informe.find({})
+        .sort("dia")
+        .exec(function (err, docs) {
+          return docs.sort((a, b) => {
+            const fixDate = (d) => {
+              let arr = d.split("/");
+              [arr[0], arr[1]] = [arr[1], arr[0]];
+              return new Date(arr.join("/"));
+            };
+            return fixDate(b.dia) - fixDate(a.dia);
+          });
+        });
     },
 
     getInforme: (parent, args) => {
