@@ -13,7 +13,6 @@ exports.pdfExtract = async (filename) => {
         .trim()
         .replace(el.removed, "")
         .replace(/[.]/g, "");
-      console.log(numb);
       obj[el.name] = Number(numb);
     });
     return obj;

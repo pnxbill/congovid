@@ -3,11 +3,25 @@ const { Informe } = require("../models/Informe");
 const resolvers = {
   Query: {
     getInformes: (parent, args) => {
-      return Informe.find({});
+      let informes = Informe.find({});
+
+      // Sort by date
+      informes = informes.sort((a, b) => {
+        const fixDate = (d) => {
+          let arr = d.split("/");
+          [arr[0], arr[1]] = [arr[1], arr[0]];
+          return new Date(arr.join("/"));
+        };
+        return fixDate(b) - fixDate(a);
+      });
+      ////////////////
+
+      return informes;
     },
+
     getInforme: (parent, args) => {
       return Informe.findOne({ dia: args.dia });
-    }
+    },
   },
   Mutation: {
     addInforme: (parent, args) => {
@@ -25,12 +39,12 @@ const resolvers = {
     },
     updateInforme: (parent, args) => {
       if (!args.id) return;
-        return Movie.findOneAndUpdate(
-         {
-           _id: args.id
-         },
-         {
-           $set: {
+      return Movie.findOneAndUpdate(
+        {
+          _id: args.id,
+        },
+        {
+          $set: {
             dia: args.dia,
             confirmados: args.confirmados,
             recuperados: args.recuperados,
@@ -39,15 +53,17 @@ const resolvers = {
             obto_descartado: args.obto_descartado,
             obto_confirmado: args.obto_confirmado,
             href: args.href,
-           }
-         }, {new: true}, (err, Movie) => {
-           if (err) {
-             console.log('Ocorreu um erro ao atualizar o informe');
-           }
-         }
+          },
+        },
+        { new: true },
+        (err, Movie) => {
+          if (err) {
+            console.log("Ocorreu um erro ao atualizar o informe");
+          }
+        }
       );
-    }
-  }
-}
+    },
+  },
+};
 
 module.exports = { resolvers };
