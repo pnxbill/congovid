@@ -26,7 +26,7 @@ const routine = async () => {
   await downloadPdf(filename, href);
 
   const daily = {
-    ...(await pdfExtract(filename)),
+    ...(await pdfExtract(filename, date)),
     href,
   };
 
