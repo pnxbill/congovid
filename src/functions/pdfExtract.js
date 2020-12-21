@@ -29,22 +29,9 @@ function dataAtualFormatada(date) {
     new Date().getFullYear()
   )}`.split("-");
   [newDate[0], newDate[1]] = [newDate[1], newDate[0]];
-  newDate = newDate.join("-");
+  newDate = newDate.join("-").concat(" 12:00");
   return new Date(newDate);
-  // var data = new Date(),
-  //   dia = data.getDate().toString(),
-  //   diaF = dia.length == 1 ? "0" + dia : dia,
-  //   mes = (data.getMonth() + 1).toString(), //+1 pois no getMonth Janeiro começa com zero.
-  //   mesF = mes.length == 1 ? "0" + mes : mes,
-  //   anoF = data.getFullYear();
-  // return diaF + "/" + mesF + "/" + anoF;
 }
-
-// const fixDate = (d) => {
-//   let arr = d.split("/");
-//   [arr[0], arr[1]] = [arr[1], arr[0]];
-//   return new Date(arr.join("/"));
-// }
 
 const scraped = [
   {
