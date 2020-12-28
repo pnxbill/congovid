@@ -7,7 +7,7 @@ exports.pdfExtract = async (filename, date) => {
 
   const scrape = () => {
     let obj = {};
-    scraped.forEach((el) => {
+    scraped.forEach((el, i) => {
       const numb = data.text
         .match(el.regex)[0]
         .trim()
